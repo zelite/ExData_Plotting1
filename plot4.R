@@ -48,7 +48,7 @@ lines(x=data.to.plot$datetime, y = data.to.plot$Sub_metering_2,
 lines(x=data.to.plot$datetime, y = data.to.plot$Sub_metering_3,
       col = "blue")
 legend(x="topright", legend = paste0("Sub_metering_", 1:3), lty = rep(1,3),
-       col = c("black", "red", "blue"))
+       col = c("black", "red", "blue"), bty="n")
 #third plot
 plot(x = data.to.plot$datetime, y = data.to.plot$Voltage, type = "l", 
      xlab="datetime", ylab="Voltage")
