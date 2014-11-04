@@ -16,20 +16,22 @@ nRows <- as.numeric(difftime(endTime, startTime, units="mins"))
 con <- unz(description = "exdata_data_household_power_consumption.zip", 
            filename = "household_power_consumption.txt")
 
+#read the headers
+headers <- unlist(str_split(readLines(con, n = 1), ";"))
 #read the data from connection
 data.to.plot <- read.table(con, header = FALSE, sep=";",
                            colClasses = c("character", "character", rep("numeric", 7)), 
                            na.strings = "?", skip=startRow, nrow=nRows)
 #in read.table colClasses are defined to speed things up. 
 
-#need to read headers separately because they were skipped
-headers <- unlist(str_split(readLines("household_power_consumption.txt", n = 1), ";"))
+#put the headers on the data
 names(data.to.plot) <- headers
 
 
 data.to.plot <- as.tbl(data.to.plot)
 #dplyr does not support POSIXlt, so need to explicity define POSIXct
-data.to.plot <- mutate(data.to.plot, datetime = as.POSIXct(strptime(paste(Date, Time), format = "%d/%m/%Y %T")))
+data.to.plot <- mutate(data.to.plot, 
+                       datetime = as.POSIXct(strptime(paste(Date, Time), format = "%d/%m/%Y %T")))
 
 png(filename = "plot2.png", width = 480, height = 480)
 
