@@ -40,7 +40,7 @@ par(mfcol =  c(2,2) )
 
 #first plot
 plot(x=data.to.plot$datetime, y = data.to.plot$Global_active_power,
-     type="l", xlab="", ylab="Global Active Power (kilowatts)")
+     type="l", xlab="", ylab="Global Active Power")
 #second plot
 plot(x=data.to.plot$datetime, y = data.to.plot$Sub_metering_1,
      type="l", xlab="", ylab="Energy sub metering")
