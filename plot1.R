@@ -18,6 +18,7 @@ con <- unz(description = "exdata_data_household_power_consumption.zip",
 
 #read the headers
 headers <- unlist(str_split(readLines(con, n = 1), ";"))
+
 #read the data from connection
 data.to.plot <- read.table(con, header = FALSE, sep=";",
                            colClasses = c("character", "character", rep("numeric", 7)), 
@@ -33,6 +34,7 @@ data.to.plot <- as.tbl(data.to.plot)
 data.to.plot <- mutate(data.to.plot, 
                        datetime = as.POSIXct(strptime(paste(Date, Time), format = "%d/%m/%Y %T")))
 
+#Now the plot code
 png(filename = "plot1.png", width = 480, height = 480)
 hist(data.to.plot$Global_active_power, xlab = "Global Active Power (kilowatts)",
      col="red", main = "Global Active Power")

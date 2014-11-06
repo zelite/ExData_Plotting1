@@ -33,6 +33,8 @@ data.to.plot <- as.tbl(data.to.plot)
 data.to.plot <- mutate(data.to.plot, 
                        datetime = as.POSIXct(strptime(paste(Date, Time), format = "%d/%m/%Y %T")))
 
+
+#Now the plot code
 png(filename = "plot3.png", width = 480, height = 480)
 
 plot(x=data.to.plot$datetime, y = data.to.plot$Sub_metering_1,

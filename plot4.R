@@ -33,6 +33,7 @@ data.to.plot <- as.tbl(data.to.plot)
 data.to.plot <- mutate(data.to.plot, 
                        datetime = as.POSIXct(strptime(paste(Date, Time), format = "%d/%m/%Y %T")))
 
+#Now the plot code
 png(filename = "plot4.png", width = 480, height = 480)
 
 par(mfcol =  c(2,2) )
