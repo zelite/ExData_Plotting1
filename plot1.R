@@ -1,5 +1,4 @@
 library(dplyr)
-library(stringr)
 
 Sys.setlocale(category = "LC_ALL", "C") #to have the weekday lables in english
 # READING FILE
